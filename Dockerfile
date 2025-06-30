@@ -1,6 +1,9 @@
-# Dockerfile
-FROM openjdk:8-jdk-alpine
+FROM maven:3.8.8-openjdk-8-slim
+
 WORKDIR /app
+
 COPY . .
-RUN ./mvnw clean package -DskipTests
+
+RUN mvn clean package -DskipTests
+
 CMD ["java", "-jar", "target/your-app.jar"]
